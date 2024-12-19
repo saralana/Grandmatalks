@@ -15,7 +15,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWxnYyIsImEiOiJja2NjbTAyczkwNXA3Mnlscm5nb
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/saralgc/cm2a6zb0h004f01pcfr88fj23',
-    center: [-30, 20], // starting position
+    center: [-44.8, 41.8], // starting position
     zoom: 2.4, // starting zoom
     minZoom: 2,
     maxZoom: 20
@@ -37,16 +37,16 @@ map.on('load', () => {
 
         $.ajax({
             type: "GET",
-            //url: 'https://docs.google.com/spreadsheets/d/...MNf0/gviz/tq?tqx=out:csv&sheet=videos',
-            url: 'assets/videos.csv',
+            url: 'https://docs.google.com/spreadsheets/d/1DCAUiy3GIoZTE5kUpIGXrIIUeIbGJZ7e9TsybO0A88M/gviz/tq?tqx=out:csv&sheet=videos',
+            //url: 'assets/videos.csv',
             dataType: "text",
             success: function (csvData) { makeGeoJSON(csvData); }
         });
             
         $.ajax({
             type: "GET",
-            //url: 'https://docs.google.com/spreadsheets/d/...MNf0/gviz/tq?tqx=out:csv&sheet=memos',
-            url: 'assets/memos.csv',
+            url: 'https://docs.google.com/spreadsheets/d/1DCAUiy3GIoZTE5kUpIGXrIIUeIbGJZ7e9TsybO0A88M/gviz/tq?tqx=out:csv&sheet=memos',
+            //url: 'assets/memos.csv',
             dataType: "text",
             success: function (csvData) { makeGeoJSON2(csvData); }
         });
@@ -63,7 +63,7 @@ map.on('load', () => {
           delimiter: ','
         }, function (err, data) {
   
-            map.loadImage('assets/icon_b1.png',
+            map.loadImage('assets/icon_memos.png',
               function(error, image){
               if (error) throw error;
               map.addImage('memo_icon', image);
@@ -89,9 +89,8 @@ map.on('load', () => {
             map.on('click', 'memos', function (e) {
                 var coordinates = e.features[0].geometry.coordinates.slice();
 
-                //var description = `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/`+e.features[0].properties.Embed +`&color=%23F6AE2D&inverse=false&auto_play=false&show_user=false"></iframe>`;
-                //var description = '<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="../assets/sounds/' + e.features[0].properties.Som + '.mp3" type="audio/mpeg"></audio>';
-                //var description = `<h2>` + lat + `<br>`  + lng + `<br>` + e.features[0].properties.Latitude2 + `<br>`  + e.features[0].properties.Longitude2 +`</h2>`;
+                var description = `<h2>` + e.features[0].properties.title + `</h2>` + `<p>` + e.features[0].properties.location + `  |  ` + e.features[0].properties.date + `</p>` + `<p>` + e.features[0].properties.description + `</p>`
+                + `<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="` + e.features[0].properties.memo + `" type="audio/mpeg"></audio>`;
 
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -134,7 +133,7 @@ map.on('load', () => {
           delimiter: ','
         }, function (err, data) {
   
-          map.loadImage('assets/icon_b3.png',
+          map.loadImage('assets/icon_videos.png',
               function(error, image){
               if (error) throw error;
               map.addImage('video_icon', image);
@@ -158,14 +157,20 @@ map.on('load', () => {
               }
   
             });        
-  
-            /*map.on('click', 'videos', function (e) {
+
+            map.on('click', 'videos', function (e) {
+
                 var coordinates = e.features[0].geometry.coordinates.slice();
+                var lng = coordinates[0];
+                var lat = coordinates[1];
+                var lng2 = parseFloat(e.features[0].properties.Longitude2);
+                var lat2 = parseFloat(e.features[0].properties.Latitude2);
+                var routeId = e.features[0].properties.id;
   
-                //var description = `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/`+e.features[0].properties.Embed +`&color=%23F6AE2D&inverse=false&auto_play=false&show_user=false"></iframe>`;
-                var description = '<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="../assets/sounds/' + e.features[0].properties.Som + '.mp3" type="audio/mpeg"></audio>';
-                //var description = `<h2>`+e.features[0].properties.Som +`</h2>`;
-  
+                var description = `<h2>` + e.features[0].properties.title + `</h2>` + `<p>` + e.features[0].properties.locations + `</p>` + `<p>` + e.features[0].properties.date + `</p>` + `<p>` + e.features[0].properties.description + `</p>`
+                + `<iframe width="100%" height="300px" src="https://www.youtube.com/embed/` + e.features[0].properties.embed + `" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>` + 
+                `<br>` + `<a href="` + e.features[0].properties.episode + `" target="_blank">go to the episode </a>`;
+
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
@@ -177,12 +182,51 @@ map.on('load', () => {
                     return;
                 }
   
-                new mapboxgl.Popup({closeButton: false, className: 'popupEpisodes'})
-                  .setLngLat(coordinates)
-                  .setHTML(description)
-                  .addTo(map);
+                // Turf.js to create arc between coordinates
+                const start = turf.point([lng, lat]);
+                const end = turf.point([lng2, lat2]);
+                const arc = turf.greatCircle(start, end, { npoints: 50 }); // 100 segmentos para suavidade
+                // Calcular o ponto mediano do arco
+                const arcLength = turf.length(arc); // Comprimento total do arco
+                const midpoint = turf.along(arc, arcLength / 2); // Ponto mediano
+                const midpointCoords = midpoint.geometry.coordinates; // Coordenadas do ponto mediano
+                
+                const popup = new mapboxgl.Popup({closeButton: false, className: 'popupEpisodes'})
+                .setLngLat(midpointCoords)
+                .setHTML(description)
+                .addTo(map);
+
+                //check if the arc source already exists before creating it
+                if (!map.getSource(routeId)) {
+                    map.addSource(routeId, {
+                        'type': 'geojson',
+                        'data': arc
+                    });
+                    console.log("Source created with routeId:", routeId);
+                } else {
+                    console.log("Source with routeId already exists.");
+                }
+
+                map.addLayer({
+                    'id': routeId,
+                    'type': 'line',
+                    'source': routeId,
+                    'layout': {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    }, 
+                    'paint': {
+                        'line-color': 'black',
+                        'line-width': 2,
+                        'line-dasharray': [2, 4],
+                    }
+                });
+                
+                popup.on('close', function () {
+                    map.removeLayer(routeId);  // Remove the arc layer when the popup closes
+                });   
             });
-            */          
+                      
   
             map.on('mouseenter', 'videos', function () {
               map.getCanvas().style.cursor = 'pointer';
@@ -210,7 +254,7 @@ map.on('load', () => {
           delimiter: ','
         }, function (err, data) {
   
-          map.loadImage('assets/icon_b2.png',
+          map.loadImage('assets/icon_episodes.png',
               function(error, image){
               if (error) throw error;
               map.addImage('episode_icon', image);
@@ -244,24 +288,6 @@ map.on('load', () => {
                 var lng2 = parseFloat(e.features[0].properties.Longitude2);
                 var lat2 = parseFloat(e.features[0].properties.Latitude2);
                 var routeId = e.features[0].properties.id;
-               
-                var description = `<h2>` + e.features[0].properties.title + `</h2>` + `<p>` + e.features[0].properties.locations + `</p>` + `<img src="` + e.features[0].properties.image + `">` + `</h2>` 
-                + `<p>` + e.features[0].properties.date1 + `</p>`
-                + `<audio controls style="width:100%;" controlsList="nodownload" autoplay><source src="` + e.features[0].properties.player1 + `" type="audio/mpeg"></audio>`
-                + `<a href="` +  e.features[0].properties.episode1 + `">go to episode 1</a>`
-                
-                + `<p>` + e.features[0].properties.date2 + `</p>`
-                + `<audio controls style="width:100%;" controlsList="nodownload"><source src="` + e.features[0].properties.player2 + `" type="audio/mpeg"></audio>`
-                + `<a href="` +  e.features[0].properties.episode2 + `">go to episode 2</a>`
-                
-                + `<p>` + e.features[0].properties.date3 + `</p>`
-                + `<audio controls style="width:100%;" controlsList="nodownload"><source src="` + e.features[0].properties.player3 + `" type="audio/mpeg"></audio>`
-                + `<a href="` +  e.features[0].properties.episode3 + `">go to episode 3</a>`
-                        
-                + `<p>` + e.features[0].properties.date4 + `</p>`
-                + `<audio controls style="width:100%;" controlsList="nodownload"><source src="` + e.features[0].properties.player4 + `" type="audio/mpeg"></audio>`
-                + `<a href="` +  e.features[0].properties.episode4 + `">go to episode 4</a>`;
-                
 
                  // Base structure
 
@@ -337,14 +363,8 @@ map.on('load', () => {
                         'line-dasharray': [2, 4],
                     }
                 });
-                
-                const isPopupOpen = popup.isOpen();
-                if (isPopupOpen) {
-                    console.log("Popup is open. No layer removed.");
-                };
-                
+            
                 popup.on('close', function () {
-                    console.log("Popup closed. Removing arc layer with routeId:", routeId);
                     map.removeLayer(routeId);  // Remove the arc layer when the popup closes
                 });        
             });   
@@ -388,8 +408,24 @@ map.on('load', () => {
             const link = document.createElement('a');
             link.id = id;
             link.href = '#';
-            link.textContent = id;
             link.className = 'active';
+            link.style.display = 'flex'; // Use flexbox
+            link.style.alignItems = 'center'; // Vertically center
+
+            // Add an image inside the link.
+            const img = document.createElement('img');
+            img.src = 'assets/icon_'+id+'.png'; // Replace with your image path
+            img.alt = id; // Alt text for the image
+            img.style.width = '30px'; // Set image size
+            img.style.height = '30px'; 
+            img.style.margin = '5px'; 
+
+            // Add text inside the link.
+            const text = document.createTextNode(id);
+
+            // Append the image and text to the link.
+            link.appendChild(img);
+            link.appendChild(text);
 
             // Show or hide layer when the toggle is clicked.
             link.onclick = function (e) {

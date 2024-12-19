@@ -8,73 +8,26 @@
   --agua: #819a7e;
 }
 
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-Medium.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-SemiBold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-Bold.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-MediumItalic.ttf") format("truetype");
-  font-weight: 600;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-SemiBoldItalic.ttf") format("truetype");
-  font-weight: 800;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BodoniModa";
-  src: url("../assets/fonts/BodoniModa-BoldItalic.ttf") format("truetype");
-  font-weight: 900;
-  font-style: italic;
-}
-
 body {
       margin: 0;
       padding: 0;
       height: 100%;
       background-color: black;
-      color: black;
-      font-family: 'BodoniModa';
+      color: white;
+      font-family: 'Lexend Exa', sans-serif; /* Use Lexend Exa as the default font */
       font-weight: 400;
       /*background-repeat: repeat-x-y;*/
       scrollbar-width: none !important;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lexend Exa', sans-serif; /* Use Crimson Text for headings */
+}
+
+p {
+  font-family: 'Lexend Exa', serif; /* Use Lexend Exa for paragraph text */
+}
+
 
 /* .marker {
     background-image: url('assets/santa_tereza.png');
@@ -172,7 +125,6 @@ hr {
 p {
     font-size: 13px;
     color: white;
-    font-family: 'BodoniModa';
     line-height: 20px;
     text-align: left;
     /*position: absolute;*/
@@ -390,25 +342,24 @@ strong::selection{
   background: black;
   position: absolute;
   z-index: 10;
-  bottom: 0vh;
-  height: 10%;
-  width: 20%;
-  left: 0;
+  bottom: 30px; 
+  height: 128px;
+  width: 170px;
+  left: 30px;
 }
 
 #menu a {  
-  font-size: 0.85vw;
-  line-height: 13px;
-  color: var(--creme);
-  display: inline-block;
-  height: 11%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  display: block;
   font-weight: 400;
   text-decoration: none;
-  text-align: center;
+  text-transform: capitalize;
+  text-align: left;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin: 4.5% 1%;
-  vertical-align: middle;
+  margin: 2px;
+  vertical-align: left;
 }
 
 .botao_creme{
@@ -438,8 +389,7 @@ strong::selection{
       position: absolute;
       top: 0;
       height: 100%;
-      background-color: var(--creme);
-      background-image: url('../assets/grid.png');
+      background-color: var(--bluegreen);
       background-size: cover;
  }
 
@@ -462,7 +412,7 @@ strong::selection{
     } 
 
     .mapboxgl-popup-content {
-      font: 400 15px/22px 'BodoniModa';
+      font: 400 15px/22px  'Lexend Exa', sans-serif;
       padding: 10px !important;
       top: -2px;
       margin-bottom: 5px;
@@ -593,6 +543,13 @@ strong::selection{
       padding: 15px;
       font-weight: 700;
       margin-top: -4px;
+    }
+
+    .mapboxgl-popup-content a {
+      color: var(--bluegreen);
+    }
+    .mapboxgl-popup-content a:hover {
+      color: white;
     }
 
     .mapboxgl-popup-content h4 {
