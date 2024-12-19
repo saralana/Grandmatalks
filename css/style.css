@@ -1,0 +1,768 @@
+:root {
+  --preto: black;
+  --creme: white;
+  --bluegreen: #00CCCC;
+  --mostarda: #00CCCC;
+  --marrom: #8c5121;
+  --rosa: #d79c9a;
+  --agua: #819a7e;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-SemiBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-MediumItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("../assets/fonts/BodoniModa-BoldItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      color: black;
+      font-family: 'BodoniModa';
+      font-weight: 400;
+      /*background-repeat: repeat-x-y;*/
+      scrollbar-width: none !important;
+}
+
+/* .marker {
+    background-image: url('assets/santa_tereza.png');
+    background-size: cover;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.marker2 {
+    background-image: url('assets/santa_tereza.png');
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+} */
+
+hr {
+  border-top: 1px dashed black !important;
+  border-bottom: 0px;
+}
+
+.sidebar {
+  height: 95% !important;
+  top: 2.5% !important;
+  width: 350px;
+  position: fixed;
+  z-index: 200;
+  background-color: var(--creme);
+  overflow-x: hidden;
+  transition: 0.5s;
+  font-size: 17px;
+  color: black;
+  text-align: left;
+}
+
+
+.sidebar a {
+  text-decoration: none;
+  font-weight: 1000;
+  font-size: 15px !important;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 5%;
+  font-size: 40px;
+  margin-right: auto;
+  z-index:200;
+  font-family: sans-serif;
+  left: 80%;
+}
+
+ .sidebar-content{ 
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    left: 10%;
+}
+
+ .sidebar-content h2{ 
+    font-size: 18px;
+}
+
+.openbtn {
+      position: absolute !important;
+      font-size: 20px;
+      cursor: pointer;
+      left: 6% !important;
+      background-color: transparent;
+      margin: 35px;
+      color: var(--creme);
+      border: none;
+      z-index: 100;
+      width: 45px;
+      display:block;
+}
+/*
+@media only screen and (min-width: 800px) {
+    .openbtn {
+      display:none;
+    }
+    
+    img {
+        position: absolute;
+        top:30px;
+        left:4%;
+        z-index:300;
+        max-height: 300px;
+    }
+}*/
+
+
+p {
+    font-size: 13px;
+    color: white;
+    font-family: 'BodoniModa';
+    line-height: 20px;
+    text-align: left;
+    /*position: absolute;*/
+    left: 30px;
+    bottom: 20px;
+}
+
+a {
+    font-size: 10px;
+    color: var(--creme);
+    line-height: 20px;
+    text-align: left;
+    /*position: absolute;*/
+    left: 30px;
+    bottom: 20px;
+    text-decoration: none !important;
+}
+
+p::selection{
+    background-color: black;
+    color: var(--creme);
+}
+
+
+#content p{
+    display: none;
+    font-size: 15px !important;
+    color: var(--creme);
+    line-height: 20px;
+    text-align: left;     
+    /*position: absolute;*/
+    left: 0px;
+    bottom: -200px;
+    background-color: black;
+    position: absolute;
+    font-weight: 200;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 90%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 0px;
+}
+
+#content p::selection{
+    background-color: var(--creme);
+    color: black;
+    
+}
+
+a::selection{
+    background-color: black;
+    color: var(--creme);
+    
+}
+
+strong::selection{
+    background-color: black !important;
+    color: var(--creme) !important;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+    font-size: 20px;
+    /*color: #f18388;*/
+    color: white;
+    line-height: 30px;
+    text-align: left !important;
+    text-transform: uppercase;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+h2::selection{
+    background-color: var(--bluegreen);
+    color: black;
+    
+}
+
+h3 {
+    font-size: 18px !important;
+    color: black !important;
+    background-color: transparent !important;
+    line-height: 20px;
+    text-align: left !important;
+    /*position: absolute;*/
+    text-transform: capitalize;
+    padding-left: 0px !important;
+}
+
+h3::selection{
+    background-color: black;
+    color: var(--creme);
+    
+}
+
+strong::selection{
+    background-color: var(--creme);
+    color: black;
+    
+}
+
+#ficha{
+  position: absolute;
+  height: 95%;
+  top: 2.5%;
+  background-color: var(--creme);
+}
+
+#creme{
+  background-color: var(--creme);
+}
+
+#marrom{
+  background-color: var(--marrom);
+}
+
+#rosa{
+  background-color: var(--rosa);
+}
+
+#mostarda{
+  background-color: var(--mostarda);
+}
+
+#agua{
+  background-color: var(--agua);
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .sidebar {
+    left: 4% !important;
+  }
+
+  #ficha{
+    left: 4%;  
+    width: 95%;
+  }
+
+  .fichario{  
+    width: 4%;
+    position: relative;
+    height: 100vh;
+  }
+
+  #map {
+      width: 100%;
+  }
+  .mapboxgl-map .popupReceitas {
+    left: 5% !important;
+    min-width: 30vw !important;
+    max-width: 30vw !important;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .sidebar {
+    left: 10% !important;
+  }
+
+  #ficha{
+    left: 10%;
+    width: 85%;
+  }
+  
+  .fichario{  
+    width: 10%;
+    position: relative;
+    height: 100vh;
+  }
+
+  #map {
+    width: 100%;
+    left: 13%;
+  }
+
+  #menu a {
+    font-size: 1.8vw !important;
+    margin: 4.5% 0% !important;
+  }
+  .social_logo {
+    width: 20px !important;
+  }
+  .mapboxgl-map .popupReceitas {
+    left: 10% !important;
+    min-width: 50vw !important;
+    max-width: 80vw !important;
+  }
+
+}
+
+.fichas{  
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  top: 2.5%;
+}
+
+.botao_ficha{
+  position: absolute;
+  height: auto;
+  right: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+#menu {
+  background: black;
+  position: absolute;
+  z-index: 10;
+  bottom: 0vh;
+  height: 10%;
+  width: 20%;
+  left: 0;
+}
+
+#menu a {  
+  font-size: 0.85vw;
+  line-height: 13px;
+  color: var(--creme);
+  display: inline-block;
+  height: 11%;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 4.5% 1%;
+  vertical-align: middle;
+}
+
+.botao_creme{
+  top:0%
+}
+.botao_marrom{
+  top:20%
+}
+.botao_mostarda{
+  top:40%
+}
+.botao_agua{
+  top:60%
+}
+.botao_rosa{
+  top:80%
+}
+
+.social_logo{
+  position: absolute;
+  left: 1.3%;
+  bottom: 2.5%;
+  width: 2%;
+}
+
+#map {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      background-color: var(--creme);
+      background-image: url('../assets/grid.png');
+      background-size: cover;
+ }
+
+
+    /* Popup styling */
+
+    .mapboxgl-popup {
+      padding-bottom: 15px;
+      max-width: 80vw !important;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      pointer-events: auto !important;
+      scrollbar-width: none !important;
+    }
+
+    .mapboxgl-popup-close-button {
+      /*display: none;*/
+      font-size: 20px;
+      color:var(--creme);
+    } 
+
+    .mapboxgl-popup-content {
+      font: 400 15px/22px 'BodoniModa';
+      padding: 10px !important;
+      top: -2px;
+      margin-bottom: 5px;
+      box-shadow: none !important;
+    }
+
+    .popupEpisodes .mapboxgl-popup-content {
+      background: black !important;
+      color: white;
+      width: 30vw;
+    }
+
+    .popupEpisodes .mapboxgl-popup-content {
+      img{
+        width: 100%;
+      }
+    }
+
+
+    .popupVideo .mapboxgl-popup-content {
+      background: var(--agua) !important;
+      width: auto;
+      height: 100%;
+    }
+
+    .mapboxgl-map .popupVideo{
+        min-width: 30vw !important;
+        height: 35vh;
+    }
+
+    .popupFotos .mapboxgl-popup-content {
+      background: var(--mostarda) !important;
+      height: auto;
+      max-width: 100vw !important;
+      width: auto;
+    }
+
+    .mapboxgl-map .popupReceitas{
+      background: var(--marrom) !important;
+      color: var(--creme) !important;
+      transform: none !important;
+      position: fixed !important;
+      bottom:auto !important;
+      top: 4% !important;
+      right: auto !important;
+      height: 90% !important;
+      max-height: 90% !important;
+      margin: 0 !important;
+      z-index: 100;
+  }
+
+  .mapboxgl-map .popupFotos{
+      min-width: 30vw !important;
+  }
+
+  ol{
+    padding-left: 0 !important;
+  }
+
+  li{
+    font-size: 13px !important;
+  }
+
+
+  /*
+  .mapboxgl-map .popupFotos{
+    background: var(--mostarda) !important;
+    color: var(--creme) !important;
+    transform: none !important;
+    position: fixed !important;
+    left: 5% !important;
+    bottom:auto !important;
+    top: 4% !important;
+    right: auto !important;
+    height: 90% !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    margin: 0 !important;
+    z-index: 100;
+}
+*/
+
+  .mapboxgl-map .popupReceitas p{
+    color: var(--creme) !important;
+}
+
+
+  .popupReceitas .mapboxgl-popup-content {
+    background: var(--marrom) !important;
+    color: var(--creme) !important;
+    margin: 5%;
+  }
+
+  .popupReceitas .mapboxgl-popup-content h2 {
+    color: var(--creme) !important;
+  }
+
+  /*
+  .mapboxgl-map .popupReceitas .mapboxgl-popup-tip{
+    display:none !important;
+  }
+*/
+    .mapboxgl-map .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip, 
+    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip .popupReceitas{
+        display:none !important;
+    }
+
+
+
+    .mapboxgl-popup-content-wrapper {
+      padding: 1%;
+    }
+
+    .mapboxgl-popup-content h3 {
+      background: black;
+      text-align: center;
+      color: #fff;
+      margin: 0;
+      display: block;
+      padding: 15px;
+      font-weight: 700;
+      margin-top: -4px;
+    }
+
+    .mapboxgl-popup-content h4 {
+      margin: 0;
+      display: block;
+      padding: 10px 3px 10px 10px;
+      font-weight: 400;
+    }
+
+    .mapboxgl-container {
+      cursor: pointer;
+    }
+
+    .mapboxgl-popup-anchor-top>.mapboxgl-popup-content {
+      margin-top: 3px;
+    }
+    .mapboxgl-popup-anchor-bottom>.mapboxgl-popup-content {
+      margin-top: 3px;
+    }
+    .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
+      border-bottom-color: black;
+    }
+.mapboxgl-popup-tip {
+    border-top-color: black !important;
+    border-bottom-color: black !important;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    align-self: center;
+    border-top-color: black !important;
+}
+
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: black !important;
+    border-top-color: #00000000 !important;
+    border-bottom-color: #fff0 !important;
+}
+
+.mapboxgl-popup-anchor-left {
+    left: 20px !important;
+    top: 10px !important;
+}
+
+.mapboxgl-popup-anchor-right {
+    left: -20px !important;
+    top: 10px !important;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: black !important;
+    border-top-color: #00000000 !important;
+    border-bottom-color: #00000000 !important;
+}
+
+.mapboxgl-ctrl-compass{
+    display: none !important;
+}
+.mapboxgl-popup-anchor-bottom {
+    top: 200px;
+}
+
+.mapboxgl-popup-anchor-top {
+    top: 10px !important;
+    margin-top: 0px;
+}
+
+a.mapboxgl-ctrl-logo{
+  display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-right{
+    display: none;
+}
+.mapboxgl-ctrl-top-right{
+    top: 3% !important;
+    right: 2.5% !important;
+}
+.mapboxgl-ctrl-top-left {
+    top: 30px !important;
+    left: 40px !important;
+}
+
+.mapboxgl-ctrl-group button {
+    background-color: black;
+}
+
+
+
+audio::-webkit-media-controls-panel, video::-webkit-media-controls-panel {
+    background-color: white;
+}
+
+audio{
+    background-color: white;
+    color: white;
+    opacity: 1;
+    width: 200px !important;
+    height: 20px !important;
+}
+
+.controls button:hover, .controls button:focus {
+   color: black;
+}
+
+
+
+.sidebar a{
+  color: black;
+}
+
+.title{
+  color: black !important;
+}
+
+#menu a:hover {
+  font-weight: 900;
+}
+
+#menu a.active {
+  background-color: white;
+  color: black;
+}
+
+#menu a.active:hover {
+  background: var(--bluegreen) ;
+}
+
+.popup {
+  text-align: center;
+}
+
+.popup .slideshow .image {
+  display: none;
+}
+
+.popup .slideshow .image.active {
+  display: block;
+}
+
+.popup .slideshow img {
+  width: auto;
+  height: 45vh;
+}
+
+.popup .slideshow .caption {
+  background: black;
+  padding: 10px;
+}
+
+.popup .cycle {
+  position: absolute !important;
+  top: 60%;
+  width:90% !important;
+}
+
+.popup .cycle a{
+  font-size: 50px !important;
+  color: var(--creme);
+  position: absolute !important;
+}
+
+.popup .cycle a.prev {
+ /* float: left;*/
+ position: absolute !important;
+ left: 5% !important;
+}
+
+.popup .cycle a.next {
+  /* float: right; */
+  position: absolute !important;
+  left: 97% !important;
+}
