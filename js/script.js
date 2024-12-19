@@ -306,7 +306,9 @@ map.on('load', () => {
                 ) {
                     description += `
                         <p>${properties[`date${index}`]}</p>
-                        <audio controls style="width:100%;" controlsList="nodownload">
+                        <audio controls style="width:100%;" controlsList="nodownload" ${
+                         index === 1 ? 'autoplay' : ''
+                        }>
                             <source src="${properties[`player${index}`]}" type="audio/mpeg">
                         </audio>
                         <a href="${properties[`episode${index}`]}" target="_blank">go to episode ${index}</a>
