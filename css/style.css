@@ -647,7 +647,7 @@ audio{
     background-color: white;
     color: white;
     opacity: 1;
-    width: 200px !important;
+    width: 100% !important;
     height: 20px !important;
 }
 
