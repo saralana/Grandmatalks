@@ -22,8 +22,15 @@ var map = new mapboxgl.Map({
     //maxBounds: bounds // Set the map's geographical boundaries.
 });
 
+var mq = window.matchMedia( "(min-width: 700px)" );
+if (mq.matches){
+    map.setCenter([-44.8, 41.8]); //set map center for desktop size
+} else {
+    map.setCenter([-105, 41.8]);
+    map.setZoom(2);
+};
 
-    // Wait until the map has finished loading.
+// Wait until the map has finished loading.
 map.on('load', () => {
         
     $(document).ready(function () {        
@@ -97,9 +104,9 @@ map.on('load', () => {
                 }
   
                 //only one popup once 
-                e.originalEvent.cancelBubble2 = true;
+                e.originalEvent.cancelBubble = true;
                 
-                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble3 || e.originalEvent.cancelBubble4) {
+                if (e.originalEvent.cancelBubble2 || e.originalEvent.cancelBubble3 || e.originalEvent.cancelBubble4) {
                     return;
                 }
   
@@ -321,8 +328,8 @@ map.on('load', () => {
                 }
                                 
                 //only one popup once 
-                e.originalEvent.cancelBubble2 = true;
-                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble3 || e.originalEvent.cancelBubble4) {
+                e.originalEvent.cancelBubble3 = true;
+                if (e.originalEvent.cancelBubble || e.originalEvent.cancelBubble2 || e.originalEvent.cancelBubble4) {
                     return;
                 }
                 
@@ -339,6 +346,13 @@ map.on('load', () => {
                 .setLngLat(midpointCoords)
                 .setHTML(description)
                 .addTo(map);
+
+                map.flyTo({
+                    center: midpointCoords, // Set center to the popup location
+                    zoom: 4, // Optional: Set desired zoom level
+                    offset: [0, -350], // Adjust offset to compensate for the popup's position
+                    duration: 1500, // Optional: Fly-to animation duration in milliseconds
+                });
 
                 //check if the arc source already exists before creating it
                 if (!map.getSource(routeId)) {

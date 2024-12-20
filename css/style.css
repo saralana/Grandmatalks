@@ -304,13 +304,8 @@ strong::selection{
 
   #map {
     width: 100%;
-    left: 13%;
   }
 
-  #menu a {
-    font-size: 1.8vw !important;
-    margin: 4.5% 0% !important;
-  }
   .social_logo {
     width: 20px !important;
   }
@@ -403,6 +398,13 @@ strong::selection{
       overflow-x: hidden;
       pointer-events: auto !important;
       scrollbar-width: none !important;
+      left: -230px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      .mapboxgl-popup {
+        left: -20px;
+      }
     }
 
     .mapboxgl-popup-close-button {
@@ -431,6 +433,18 @@ strong::selection{
       }
     }
 
+    @media only screen and (max-width: 1000px) {
+      .popupEpisodes .mapboxgl-popup-content {
+        background: black !important;
+        color: white;
+        width: 80vw;
+      }
+      .popupEpisodes .mapboxgl-popup-content {
+        img{
+          width: 90%;
+        }
+      }
+    }
 
     .popupVideo .mapboxgl-popup-content {
       background: var(--agua) !important;
